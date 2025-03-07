@@ -1,0 +1,6 @@
+@NayaViewAnimeApi_HostAddress = http://localhost:5183
+
+GET {{NayaViewAnimeApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

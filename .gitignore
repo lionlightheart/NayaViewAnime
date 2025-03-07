@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/aspnetcore,csharp
-# Edit at https://www.toptal.com/developers/gitignore?templates=aspnetcore,csharp
+# Created by https://www.toptal.com/developers/gitignore/api/visualstudio,aspnetcore
+# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudio,aspnetcore
 
 ### ASPNETCore ###
 ## Ignore Visual Studio temporary files, build results, and
@@ -271,7 +271,7 @@ __pycache__/
 # Cake - Uncomment if you are using it
 # tools/
 
-### Csharp ###
+### VisualStudio ###
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
@@ -523,4 +523,7 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 
-# End of https://www.toptal.com/developers/gitignore/api/aspnetcore,csharp
+### VisualStudio Patch ###
+# Additional files built by Visual Studio
+
+# End of https://www.toptal.com/developers/gitignore/api/visualstudio,aspnetcore
