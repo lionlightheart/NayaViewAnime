@@ -35,9 +35,8 @@ The project may require some environment variables for configuration (e.g., data
 ```bash
 dotnet run
 ```
-
+## ⚠️ Important: Using the MyAnimeList API  
 > [!WARNING] 
->## ⚠️ Important: Using the MyAnimeList API  
 >This project uses the MyAnimeList API (**MAL API**) to retrieve anime and manga information. **It does not include pre-downloaded data or credentials.**  
 >
 >### 🚀 How to Use This Project  
