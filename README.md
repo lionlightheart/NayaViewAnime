@@ -1,6 +1,6 @@
-[!WARNING] 
-## ⚠️ Important: Using the MyAnimeList API  
-This project uses the MyAnimeList API (**MAL API**) to retrieve anime and manga information. **It does not include pre-downloaded data or credentials.**  
+> [!WARNING] 
+>## ⚠️ Important: Using the MyAnimeList API  
+>This project uses the MyAnimeList API (**MAL API**) to retrieve anime and manga information. **It does not include pre-downloaded data or credentials.**  
 
 ### 🚀 How to Use This Project  
 1. **Obtain a Client ID**:  
