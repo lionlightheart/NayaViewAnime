@@ -4,7 +4,7 @@
 >
 >### 🚀 How to Use This Project  
 >1. **Obtain a Client ID**:  
->   - To access the MAL API, you need to register and get a `Client ID` from [their official page](https://myanimelist.net/apiconfig).  
+>   - To access the MAL API, you need to register and get a `Client ID` from [their official page](https://myanimelist.net/).  
 >   - This `Client ID` must be set in a `.env` file.  
 >
 >2. **Set Up Your Database**:  
