@@ -1,8 +1,15 @@
+using NayaViewAnimeApi.Application;
+using NayaViewAnimeApi.Infrastructure;
+
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//Dependecies
+//main services
+builder.Services.AddHttpClient<IExternalApiService, ExternalApiService>();
+
+
+//other services
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

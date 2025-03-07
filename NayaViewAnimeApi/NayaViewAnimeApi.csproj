@@ -8,10 +8,13 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="7.3.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\NayaViewAnimeApi.Application\NayaViewAnimeApi.Application.csproj" />
+    <ProjectReference Include="..\NayaViewAnimeApi.Domain\NayaViewAnimeApi.Domain.csproj" />
+    <ProjectReference Include="..\NayaViewAnimeApi.Infrastructure\NayaViewAnimeApi.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
