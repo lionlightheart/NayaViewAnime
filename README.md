@@ -8,7 +8,6 @@ Before running the project, make sure you have the following requirements:
 - **Database**: If the project uses a database, ensure it is set up. You may use:
   - MongoDb Server Community Edition: [Official site](https://www.mongodb.com/products/self-managed/community-edition)
   - You can also use other MongoDB products, such as MongoDB Atlas or MongoDB Enterprise Advanced, but I recommend the Community version.
-- **Additional tools** (if any, for example, Redis, RabbitMQ, etc.)
 
 ## Clone the Repository
 
