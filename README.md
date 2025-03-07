@@ -21,14 +21,20 @@ git clone https://github.com/username/repository.git
 cd repository
 ````
 
-1. Install Dependencies
+## 1. Install Dependencies
 Run the following command to restore the project dependencies:
 
 ```bash
 dotnet restore
 ```
-2. Configure Environment Variables
+## 2. Configure Environment Variables
 The project may require some environment variables for configuration (e.g., database connection strings or API keys). Create an .env file or set these variables in your local environment.
+
+## 3. Run the project
+
+```bash
+dotnet run
+```
 
 > [!WARNING] 
 >## ⚠️ Important: Using the MyAnimeList API  
