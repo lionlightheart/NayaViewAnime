@@ -17,4 +17,4 @@
 >- It does not allow API requests to MAL without setting up your own `Client ID`.  
 >
 >### 📜 Legal Notice  
->The use of the MAL API is subject to their **[Terms and Conditions](https://myanimelist.net/apiconfig)**. Make sure to comply with them when using this project.  
+>The use of the MAL API is subject to their **[Terms and Conditions](https://myanimelist.net/static/apiagreement.html)**. Make sure to comply with them when using this project.  
