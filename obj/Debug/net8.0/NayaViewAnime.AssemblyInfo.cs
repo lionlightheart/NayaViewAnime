@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NayaViewAnime")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+20a4c801859fd965cb844cbfa74d27cf381c8a30")]
 [assembly: System.Reflection.AssemblyProductAttribute("NayaViewAnime")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NayaViewAnime")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
