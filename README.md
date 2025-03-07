@@ -1,4 +1,4 @@
-> [!WARNING] 
+[!WARNING] 
 ## ⚠️ Important: Using the MyAnimeList API  
 This project uses the MyAnimeList API (**MAL API**) to retrieve anime and manga information. **It does not include pre-downloaded data or credentials.**  
 
