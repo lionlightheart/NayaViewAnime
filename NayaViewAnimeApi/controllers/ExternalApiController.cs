@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+
 using NayaViewAnimeApi.Application;
 
 namespace NayaViewAnimeApi.controllers
@@ -8,14 +9,11 @@ namespace NayaViewAnimeApi.controllers
     public class ExternalApiController : ControllerBase
     {
         private readonly IExternalApiService _externalApiService;
-        private readonly IConfiguration _configuration;
  
 
-    public ExternalApiController(IExternalApiService externalApiService, IConfiguration configuration)
+    public ExternalApiController(IExternalApiService externalApiService)
         {
             _externalApiService = externalApiService;
-            _configuration = configuration;
-
         }
 
         [HttpGet]
@@ -31,6 +29,24 @@ namespace NayaViewAnimeApi.controllers
             {
                 return StatusCode(500, $"Error al obtener datos de la API externa: {ex.Message}");
             }
+        }
+
+        [HttpGet]
+        [Route("AnimeList")]
+        public async Task<IActionResult> GetAnimeDataAsync(string query)
+        {
+            var token = Environment.GetEnvironmentVariable("MAL_TOKEN");
+            var mal_api_version = Environment.GetEnvironmentVariable("MAL_API_VERSION");
+            var base_url = Environment.GetEnvironmentVariable("MAL_HOST");
+
+            if (string.IsNullOrEmpty(token)){
+                return Unauthorized("No have token");
+            }
+
+            var url = $"{base_url}/{mal_api_version}{query}";
+            var data = await _externalApiService.GetAnimeDataAsync(url, token);
+
+            return Ok(data);
         }
     }
 }

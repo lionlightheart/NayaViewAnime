@@ -1,8 +1,10 @@
-﻿namespace NayaViewAnimeApi.Application
+﻿using NayaViewAnimeApi.Domain;
+
+namespace NayaViewAnimeApi.Application
 {
     public interface IExternalApiService
     {
         Task<string> GetDataFromExternalApiAsync(string endpoint);
-        Task<string> GetAnimeDataAsync(string query, string token);
+        Task<MyAnimeListResponseDto?> GetAnimeDataAsync(string query, string token);
     }
 }

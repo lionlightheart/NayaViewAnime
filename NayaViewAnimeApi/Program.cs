@@ -1,7 +1,7 @@
 using NayaViewAnimeApi.Application;
+using DotNetEnv;
 using NayaViewAnimeApi.Infrastructure;
-
-using Swashbuckle.AspNetCore.SwaggerGen;
+Env.Load();
 
 var builder = WebApplication.CreateBuilder(args);
 
