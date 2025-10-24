@@ -14,19 +14,31 @@ pipeline {
             }
         }
 
+        stages {
         stage('Generate .env') {
             steps {
                 withCredentials([string(credentialsId: 'postgres_password', variable: 'POSTGRES_PASSWORD')]) {
                     sh '''
-                    echo "POSTGRES_USER=postgres" > .env
-                    echo "POSTGRES_PASSWORD=$POSTGRES_PASSWORD" >> .env
-                    echo "POSTGRES_DB=mydb" >> .env
-                    echo "REDIS_HOST=redis" >> .env
-                    echo "REDIS_PORT=6379" >> .env
+                    echo "# PostgreSQL" > $ENV_FILE
+                    echo "POSTGRES_USER=Naya_DB_USER" >> $ENV_FILE
+                    echo "POSTGRES_PASSWORD=$POSTGRES_PASSWORD" >> $ENV_FILE
+                    echo "POSTGRES_DB=NayaDb" >> $ENV_FILE
+                    echo "POSTGRES_PORT=5432" >> $ENV_FILE
+
+                    echo "" >> $ENV_FILE
+                    echo "# Redis" >> $ENV_FILE
+                    echo "REDIS_HOST=redis" >> $ENV_FILE
+                    echo "REDIS_PORT=6379" >> $ENV_FILE
+
+                    echo "" >> $ENV_FILE
+                    echo "# Backend" >> $ENV_FILE
+                    echo "DATABASE_URL=postgres://Naya_DB_USER:$POSTGRES_PASSWORD@db:5432/NayaDb" >> $ENV_FILE
+                    echo "REDIS_URL=redis://redis:6379" >> $ENV_FILE
                     '''
                 }
             }
         }
+    }
 
         stage('Generate SSL Certificates') {
             steps {
