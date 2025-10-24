@@ -6,8 +6,17 @@ RUN npm install
 COPY . .
 RUN npm run build --prod
 
-# Stage 2: Serve
+# Stage 2: Serve con Nginx
 FROM nginx:alpine
+
+# Copiamos build de Angular
 COPY --from=builder /app/dist/nayaview-anime-front /usr/share/nginx/html
-EXPOSE 80
+
+# Copiamos configuración de Nginx con SSL
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Montaje de certificados externos desde docker-compose
+# EXPOSE 80 y 443
+EXPOSE 80 443
+
 CMD ["nginx", "-g", "daemon off;"]
