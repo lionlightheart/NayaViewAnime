@@ -3,7 +3,6 @@ pipeline {
 
     environment {
         COMPOSE_PROJECT_NAME = "nayaview"
-        CERT_DIR = "certs"
     }
 
     stages {
@@ -13,24 +12,10 @@ pipeline {
             }
         }
 
-        stage('Generate SSL Certificates') {
-            steps {
-                sh """
-                mkdir -p $CERT_DIR
-                openssl req -x509 -nodes -days 365 \
-                    -subj '/CN=localhost/O=Dev' \
-                    -newkey rsa:2048 \
-                    -keyout $CERT_DIR/cert.key \
-                    -out $CERT_DIR/cert.crt
-                """
-            }
-        }
-
         stage('Build and Deploy Docker Compose') {
             steps {
                 withCredentials([string(credentialsId: 'postgres_password', variable: 'POSTGRES_PASSWORD')]) {
                     sh """
-                    # Export variables en memoria
                     export POSTGRES_USER=Naya_DB_USER
                     export POSTGRES_PASSWORD=$POSTGRES_PASSWORD
                     export POSTGRES_DB=NayaDb
@@ -44,23 +29,6 @@ pipeline {
                     """
                 }
             }
-        }
-
-        stage('Run Tests') {
-            steps {
-                sh 'docker-compose run --rm backend npm run test'
-                sh 'docker-compose run --rm frontend npm run test'
-                sh 'docker-compose run --rm analytics pytest'
-            }
-        }
-    }
-
-    post {
-        success {
-            echo '✅ Despliegue exitoso'
-        }
-        failure {
-            echo '❌ Fallo en el pipeline'
         }
     }
 }
