@@ -261,3 +261,11 @@ cython_debug/
 *.crt
 *.key
 *.csr
+
+
+node_modules
+# Keep environment variables out of version control
+.env
+
+
+/nayaview-anime-back/generated/prisma
