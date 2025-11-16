@@ -1,12 +1,6 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
+// prisma/schema.prisma
 generator client {
-  provider = "prisma-client"
-  output   = "../generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -14,24 +8,88 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum MediaType {
+  ANIME
+  MANGA
+  FILM
+  SERIES
+}
+
+enum MediaStatus {
+  RELEASING
+  FINISHED
+  NOT_YET_RELEASED
+  CANCELLED
+}
+
+enum UserMediaStatus {
+  PLANNING
+  WATCHING
+  COMPLETED
+  ON_HOLD
+  DROPPED
+}
+
 model User {
-  id            String    @id @default(uuid())
-  email         String    @unique
-  username      String    @unique
-  password      Password? @relation("UserPassword")
-  passwordId    String?   @unique
+  id            String      @id @default(uuid())
+  email         String      @unique
+  username      String
+  userHashtag   String?     @unique
+  password      Password?
   oauthProvider String?
   oauthId       String?
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  userMedias    UserMedia[]
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
 }
 
 model Password {
-  id     String @id @default(uuid())
-  hash   String
-  user   User   @relation("UserPassword", fields: [userId], references: [id])
-  userId String @unique
-  active Boolean @default(true)
+  id        String   @id @default(uuid())
+  hash      String
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Media {
+  id            String      @id @default(uuid())
+  title         String
+  type          MediaType
+  status        MediaStatus
+  episodes      Int?
+  synopsis      String?
+  coverImageUrl String?
+  tags          Tag[]       @relation("MediaTags")
+  userMedias    UserMedia[]
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  @@index([title])
+}
+
+model UserMedia {
+  id        String          @id @default(uuid())
+  user      User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  media     Media           @relation(fields: [mediaId], references: [id], onDelete: Cascade)
+  mediaId   String
+  status    UserMediaStatus
+  progress  Int? // e.g., episode/page progress
+  score     Int? // rating (0-10 or similar)
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
+
+  @@unique([userId, mediaId], name: "unique_user_media")
+  @@index([userId])
+  @@index([mediaId])
+}
+
+model Tag {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  medias    Media[]  @relation("MediaTags")
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

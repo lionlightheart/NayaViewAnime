@@ -5,6 +5,7 @@ import formData from 'form-data';
 import { MAILGUN_CLIENT } from './mail.constants';
 import { MailService } from './mail.service';
 
+// NOTA: si prefieres no exportar globalmente, quita @Global() y la exportación global.
 @Global()
 @Module({})
 export class MailModule {
@@ -17,14 +18,15 @@ export class MailModule {
           provide: MAILGUN_CLIENT,
           inject: [ConfigService],
           useFactory: (config: ConfigService) => {
+            const apiKey = config.get<string>('MAILGUN_API_KEY') || '';
+            // mailgun.js requiere form-data cuando usas attachments/MIME
             const mg = new Mailgun(formData);
-            return mg.client({
+            const client = mg.client({
               username: 'api',
-              key: config.get<string>('MAILGUN_API_KEY') || '',
-              url:
-                config.get<string>('MAILGUN_API_URL') ||
-                'https://api.mailgun.net',
+              key: apiKey,
+              // opcional: url: config.get<string>('MAILGUN_API_URL')
             });
+            return client;
           },
         },
         MailService,
