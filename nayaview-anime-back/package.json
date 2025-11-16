@@ -6,6 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "build": "nest build",
     "start": "nest start",
     "start:dev": "nest start --watch",
@@ -35,6 +36,7 @@
     "@types/jest": "^30.0.0",
     "@types/node": "^24.10.1",
     "@types/supertest": "^6.0.3",
+    "babel-jest": "^30.2.0",
     "eslint": "^9.39.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
@@ -51,6 +53,9 @@
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.46.4"
   },
+  "resolutions": {
+  "js-yaml": "^4.1.1"
+},
   "jest": {
     "moduleFileExtensions": [
       "js",
