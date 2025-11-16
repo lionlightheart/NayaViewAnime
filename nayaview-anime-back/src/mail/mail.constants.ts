@@ -1,0 +1,1 @@
+export const MAILGUN_CLIENT = 'MAILGUN_CLIENT';
