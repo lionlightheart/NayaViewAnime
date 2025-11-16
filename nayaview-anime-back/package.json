@@ -21,6 +21,7 @@
     "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^11.1.9",
     "@prisma/client": "^6.19.0",
+    "class-validator": "^0.14.2",
     "dotenv": "^17.2.3",
     "mailgun.js": "^12.1.1",
     "reflect-metadata": "^0.2.2",
@@ -53,9 +54,6 @@
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.46.4"
   },
-  "resolutions": {
-  "js-yaml": "^4.1.1"
-},
   "jest": {
     "moduleFileExtensions": [
       "js",
